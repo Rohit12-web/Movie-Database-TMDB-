@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flash-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50; /* Green for success */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+.flash-message.error { background-color: #f44336; } /* Red for error */
+
+    </style>
+</head>
+<body>
+    <button onclick="showFlashMessage('Movie added successfully!')">Show Message</button>
+</body>
+</html>
+<script>
+    function showFlashMessage(message, type = "success") {
+    const flashDiv = document.createElement("div");
+    flashDiv.className = `flash-message ${type}`;
+    flashDiv.textContent = message;
+    
+    document.body.appendChild(flashDiv);
+    
+    setTimeout(() => {
+        flashDiv.remove();
+    }, 3000); // Removes message after 3 seconds
+}
+
+</script>
